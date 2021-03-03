@@ -1,32 +1,48 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div>
+    <tabbar v-show="isTabbarShow"></tabbar>
+    <router-view></router-view>
+    <div class="distance"></div>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import tabbar from './components/Tabbar' // 导入所有接口
+import { mapState } from 'vuex' // {mapState}这种写法是选择导入vuex中的方法，只导入某几个接口
+// import bus from '@/bus'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  data () {
+    return {
+      // isShow:true,
     }
+  },
+  // beforeMount(){
+  //   // 事件总线实例
+  //   bus.$on("hide",(data)=>{
+  //     this.isShow = data;
+  //   })
+  // },
+  computed: {
+    ...mapState(['isTabbarShow'])
+  },
+  components: {
+    tabbar
   }
+}
+</script>
+
+<style lang="scss">
+*{
+  margin: 0;padding: 0;
+}
+html{
+  height: 100%;
+}
+li{
+  list-style: none;
+}
+.distance{
+  width: 100%;height: 50px;
 }
 </style>
