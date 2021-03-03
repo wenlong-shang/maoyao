@@ -3,7 +3,7 @@
         <div class="city" @click="handleClick">
             {{cityName}}
         </div>
-        <swiper :key="looplist.length" ref="myswiper"> <!-- 动态key值解决swiper初始化过早问题，动态key值变化，之间创建的swiper会被删掉重新创建新的 -->
+        <swiper :key="looplist.length" ref="myswiper"> <!-- film组件加载后，swiper立刻创建，但是axios请求的数据还没回来，looplist是个空数组，在swiper组件中已经初始化了，所以不用key会有问题，动态key值解决swiper初始化过早问题，动态key值变化，之间创建的swiper会被删掉重新创建新的 -->
             <div class="swiper-slide" v-for="data in looplist" :key="data.bannerId">
                 <img :src="data.imgUrl">
             </div>

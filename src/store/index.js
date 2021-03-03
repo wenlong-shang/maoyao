@@ -1,6 +1,6 @@
-import axios from 'axios'
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 import { HIDE_TABBAR_MUTATION } from '@/type'
 import { Indicator } from 'mint-ui'
 

@@ -79,6 +79,7 @@ export default {
       // 数据加载完做判断，然后再向下滑停止请求数据
       if (this.datalist.length === this.total) {
         this.isShowNow = false
+        
         console.log(this.total)
 
         return

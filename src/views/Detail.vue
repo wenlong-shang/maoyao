@@ -1,8 +1,8 @@
 <template>
     <div v-if="filminfo">
-        <!-- v-if="filminfo"解决初始渲染出错问题，刚开始渲染，filminfo为null，报错，axios请求的数据回来后，filminfo为真，页面渲染出来，filminfo赋值为{}时，filminfo.name不报错,filminfo.a.name就会报错 -->
+        <!-- v-if="filminfo"解决初始渲染出错问题，刚开始渲染，filminfo为null，不能点一个空属性，报错，axios请求的数据回来后，filminfo为真，页面渲染出来，filminfo赋值为{}时，filminfo.name不报错,filminfo.a.name就会报错 -->
         <div class="poster">
-            <img :src="filminfo.poster" ref="poster">   <!-- 问题：如何用ref获得这里的DOM节点? -->
+            <img :src="filminfo.poster" ref="poster">
         </div>
         <h2>{{filminfo.name}}</h2>
         <h3>演职人员</h3>
@@ -43,7 +43,7 @@ export default {
   components: {
     swiper
   },
-  props: ['id'],
+  // props: ['id'],
   beforeMount () {
     // bus.$emit("hide",false)
     // this.$store.state.isTabbarShow = false;  这种方法不科学
